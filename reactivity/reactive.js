@@ -1,47 +1,6 @@
-// import { Dep, effectWatch } from "./dep"
+// reactive
 
-let currentEffect
-
-// 依赖
-class Dep {
-  // 收集依赖
-  constructor(val) {
-    this.effects = new Set()
-    this._value = val
-  }
-
-  get value () {
-    this.addDep()
-    return this._value
-  }
-
-  set value (newVal) {
-    this._value = newVal
-    this.notify()
-  }
-
-  // 添加依赖
-  addDep () {
-    if (currentEffect) {
-      this.effects.add(currentEffect)
-    }
-  }
-
-  // 触发依赖
-  notify () {
-    this.effects.forEach(effect => {
-      effect()
-    })
-  }
-}
-
-// 收集依赖
-function effectWatch (effect) {
-  currentEffect = effect
-  effect()
-  currentEffect = null
-}
-
+import { Dep, effectWatch } from './dep.js'
 
 let targetMap = new Map()
 
@@ -81,14 +40,13 @@ function reactive (raw) {
   })
 }
 
+// test
 const user = reactive({
   age: 10
 })
-
 let plus
 effectWatch(() => {
   plus = user.age + 1
   console.log(plus)
 })
 user.age = 20 // change value
-
