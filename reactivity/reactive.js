@@ -21,7 +21,7 @@ function getDep (target, key) {
 }
 
 // proxy 响应
-function reactive (raw) {
+export function reactive (raw) {
   return new Proxy(raw, {
     get (target, key) {
       const dep = getDep(target, key)
@@ -39,14 +39,3 @@ function reactive (raw) {
     }
   })
 }
-
-// test
-const user = reactive({
-  age: 10
-})
-let plus
-effectWatch(() => {
-  plus = user.age + 1
-  console.log(plus)
-})
-user.age = 20 // change value

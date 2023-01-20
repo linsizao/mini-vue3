@@ -42,12 +42,12 @@ export function effectWatch (effect) {
 }
 
 // test
-const dep = new Dep(10)
-let b
-effectWatch(() => {
-  b = dep.value + 10
-  console.log('b', b)
-})
-dep.value = 20 // change value
+// const dep = new Dep(10)
+// let b
+// effectWatch(() => {
+//   b = dep.value + 10
+//   console.log('b', b)
+// })
+// dep.value = 20 // change value
 
 
