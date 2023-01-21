@@ -1,19 +1,25 @@
-// test
+// // test
 
-import { effectWatch } from "./reactivity/dep.js"
-import { reactive } from "./reactivity/reactive.js"
+// import { effectWatch } from "./reactivity/dep.js"
+// import { reactive } from "./reactivity/reactive.js"
 
-const user = reactive({
-  age: 10
-})
+// const user = reactive({
+//   age: 10
+// })
 
-let plus
+// let plus
 
-effectWatch(() => {
-  plus = user.age + 1
-  console.log('---effectWatch---')
-  console.log('user.age: ', user.age)
-  console.log('plus: ', plus)
-})
+// effectWatch(() => {
+//   plus = user.age + 1
+//   console.log('---effectWatch---')
+//   console.log('user.age: ', user.age)
+//   console.log('plus: ', plus)
+// })
 
-user.age = 20 // change value
+// user.age = 20 // change value
+
+
+import App from './App.js'
+import { createdApp } from './core/index.js'
+
+createdApp(App).mount(document.querySelector('#app'))

@@ -1,6 +1,6 @@
 // reactive
 
-import { Dep, effectWatch } from './dep.js'
+import { Dep } from './dep.js'
 
 let targetMap = new Map()
 
