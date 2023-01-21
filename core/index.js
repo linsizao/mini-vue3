@@ -1,4 +1,5 @@
 import { effectWatch } from './reactivity/dep.js'
+import { mountElement } from './render/index.js'
 
 export function createdApp (rootComponent) {
   return {
@@ -7,8 +8,8 @@ export function createdApp (rootComponent) {
 
       effectWatch(() => {
         rootContainer.innerHTML = ''
-        const ele = rootComponent.render(ctx)
-        rootContainer.append(ele)
+        const render = rootComponent.render(ctx)
+        mountElement(render, rootContainer)
       })
     }
   }

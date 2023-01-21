@@ -1,11 +1,14 @@
 import { reactive } from './core/reactivity/reactive.js'
+import { h } from './core/h.js'
 
 export default {
   render (ctx) {
-    const div = document.createElement('div')
-    div.innerHTML = `count: ${ctx.state.count}`
+    const html = `count: ${ctx.state.count}`
 
-    return div
+    return h('div', { id: 'count' }, [
+      h('p', null, html),
+      h('p', null, html)
+    ])
   },
 
   setup () {
