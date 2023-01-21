@@ -13,9 +13,14 @@ export default {
       count: 0
     })
 
-    setInterval(() => {
+    const timer = setInterval(() => {
       state.count++
+
+      if (state.count === 10) {
+        clearInterval(timer)
+      }
     }, 1000)
+
 
     return {
       state
