@@ -22,10 +22,14 @@ function getDep (target, key) {
 
 // proxy 响应
 export function reactive (raw) {
-  return new Proxy(raw, {
+  const handler = {
     get (target, key) {
       const dep = getDep(target, key)
       dep.addDep()
+
+      if (typeof target[key] === 'object' && target[key] !== null) {
+        return new Proxy(target[key], handler)
+      }
 
       return Reflect.get(target, key)
     },
@@ -37,5 +41,7 @@ export function reactive (raw) {
 
       return result
     }
-  })
+  }
+
+  return new Proxy(raw, handler)
 }
