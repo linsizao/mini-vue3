@@ -32,7 +32,7 @@ export function mountElement (vnode, container) {
   container.append(el)
 }
 
-// TODO: 简单的 diff 算法
+// 简单的 diff 算法
 export function diff (oldVnode, newVnode) {
   if (oldVnode.tag !== newVnode.tag) {
     // change tag
@@ -105,5 +105,4 @@ export function diff (oldVnode, newVnode) {
       }
     }
   }
-
 }

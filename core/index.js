@@ -9,7 +9,6 @@ export function createdApp (rootComponent) {
       let pervSubTree // 先前的结构树
 
       effectWatch(() => {
-
         if (!isMounted) {
           // init
           isMounted = true
