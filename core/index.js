@@ -9,17 +9,15 @@ export function createdApp (rootComponent) {
       let pervSubTree // 先前的结构树
 
       effectWatch(() => {
+        const subTree = rootComponent.render(ctx)
         if (!isMounted) {
           // init
           isMounted = true
           rootContainer.innerHTML = ''
-          const subTree = rootComponent.render(ctx)
           mountElement(subTree, rootContainer)
           pervSubTree = subTree
         } else {
           // update
-          const subTree = rootComponent.render(ctx)
-          console.log('pervSubTree', pervSubTree)
           diff(pervSubTree, subTree) // diff 算法
           pervSubTree = subTree
         }
